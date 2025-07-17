@@ -128,3 +128,19 @@ setInterval(() => {
   currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
   carouselImages[currentImageIndex].classList.add('active');
 }, 5000); // troca a cada 5 segundos
+
+const hamburger = document.getElementById('hamburgerBtn');
+const navMenu = document.querySelector('nav');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+
+document.addEventListener('click', function (e) {
+  const isClickInside = hamburger.contains(e.target) || navMenu.contains(e.target);
+  if (!isClickInside && navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    hamburger.classList.remove('active'); // ⬅ remove animação
+  }
+});

@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  gap: 20px;
+  transition: none; /* para desktop não anima */
+}
+
+/* Mobile – menu oculto por padrão */
+@media (max-width: 750px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
