@@ -143,4 +143,61 @@ document.addEventListener('click', function (e) {
     navMenu.classList.remove('active');
     hamburger.classList.remove('active'); // ⬅ remove animação
   }
+})
+
+// Rolagem lateral dos serviços (ativado só em telas <= 750px)
+const scrollContainer = document.getElementById('services-scroll');
+const scrollLeftBtn = document.getElementById('scroll-left');
+const scrollRightBtn = document.getElementById('scroll-right');
+
+function updateScrollButtonsVisibility() {
+  const isMobile = window.innerWidth <= 750;
+  scrollLeftBtn.style.display = isMobile ? 'block' : 'none';
+  scrollRightBtn.style.display = isMobile ? 'block' : 'none';
+
+  if (isMobile) {
+    scrollContainer.scrollLeft = 0; // reset scroll ao entrar no modo mobile
+  } else {
+    scrollContainer.scrollLeft = 0; // evita rolagem indevida em telas grandes
+  }
+}
+
+scrollLeftBtn.addEventListener('click', () => {
+  scrollContainer.scrollBy({
+    left: -250, // distância de scroll
+    behavior: 'smooth'
+  });
 });
+
+scrollRightBtn.addEventListener('click', () => {
+  scrollContainer.scrollBy({
+    left: 250, // distância de scroll
+    behavior: 'smooth'
+  });
+});
+
+window.addEventListener('resize', updateScrollButtonsVisibility);
+window.addEventListener('load', updateScrollButtonsVisibility);
+
+const nav = document.getElementById('navMenu');
+const toggle = document.getElementById('hamburgerBtn');
+
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.hidden = expanded;
+  });
+
+  // Responsividade: garante que no desktop o menu sempre apareça
+  const mq = window.matchMedia('(max-width: 750px)');
+  const sync = () => {
+    nav.hidden = mq.matches;
+    toggle.hidden = !mq.matches;
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+  mq.addEventListener?.('change', sync);
+  sync();
+}
+
+

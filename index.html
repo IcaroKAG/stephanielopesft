@@ -12,23 +12,25 @@
 </head>
 <body>
 
-  <header>
-  <div class="container">
+<header>
+  <div class="container header-container">
     <div class="logo">StephanieLopesft</div>
 
     <!-- Botão de menu hamburguer (visível só em telas pequenas) -->
-    <div class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" role="button" tabindex="0">
+    <button class="nav-toggle" id="hamburgerBtn" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menu">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
 
     <!-- Navegação -->
-    <nav id="navMenu" aria-label="Navegação principal">
-      <a href="#portfolio">Portfólio</a>
-      <a href="#services">Serviços</a>
-      <a href="#testimonials">Depoimentos</a>
-      <a href="#contato">Contato</a>
+    <nav id="navMenu" class="site-nav" aria-label="Navegação principal">
+      <ul class="nav-list">
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#testimonials">Depoimentos</a></li>
+        <li><a href id="contact-link">Contato</a></li>
+      </ul>
     </nav>
   </div>
 </header>
@@ -39,7 +41,6 @@
  <section class="hero-carousel">
   <div class="carousel-images">
     <div class="carousel-image active" style="background-image: url('./src/carol2.image.png');"></div>
-    <div class="carousel-image" style="background-image: ur('./src/casal.image.png');"></div>
     <div class="carousel-image" style="background-image: url('./src/mulhe.image.png');"></div>
   </div>
   <div class="hero-content container">

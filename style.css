@@ -142,10 +142,19 @@ nav a:focus {
 
 
 /* Serviços */
+.services-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap; /* garante quebra automática */
+}
 .services {
   background: var(--background-white);
   padding: 60px 0;
   text-align: center;
+  flex: 1 1 250px; /* mínimo 250px por card */
+  text-align: center;
+  padding: 1rem;
 }
 .services h2 {
   margin-bottom: 40px;
@@ -190,6 +199,19 @@ nav a:focus {
 }
 
 /* Portfólio */
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
 .portfolio {
   background: var(--light-green-bg);
   padding: 60px 0;

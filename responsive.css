@@ -1,30 +1,134 @@
-nav {
+/* --- NAV DESKTOP --- */
+.site-nav .nav-list {
   display: flex;
-  gap: 20px;
-  transition: none; /* para desktop não anima */
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Mobile – menu oculto por padrão */
+.site-nav .nav-list a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+}
+
+/* --- BOTÃO HAMBURGUER --- */
+.nav-toggle {
+  display: none; /* escondido no desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+}
+
+/* --- MOBILE ATÉ 750px --- */
 @media (max-width: 750px) {
-  nav {
-    display: none;
+  .nav-toggle {
+    display: flex;
     position: absolute;
-    top: 70px;
-    right: 20px;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    z-index: 1000;
+    top: 1rem;
+    right: 1rem;
   }
 
-  nav.active {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
+  .site-nav {
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    padding: 1rem;
+    width: 200px;
   }
+
+  .site-nav .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* nav escondido por padrão no mobile */
+  .site-nav[hidden] {
+    display: none;
+  }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 750px) {
+  .services-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+/* MOBILE mantém a mesma grid, mas ajusta padding */
+@media (max-width: 750px) {
+  .portfolio-container {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+}
+
+/* MOBILE: coluna */
+@media (max-width: 750px) {
+  footer .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer .footer-container .social-icons {
+     margin-top: 0.5rem;
+    display: flex;
+    justify-content: center; /* ícones centralizados */
+    gap: 1rem; /* espaço uniforme entre os ícones */
+  }
+}
+
+/* --- BOTÃO HAMBÚRGUER --- */
+.hamburger {
+  width: 30px;
+  height: 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1100; /* acima do menu */
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+}
+
+/* --- ANIMAÇÃO PARA VIRAR "X" --- */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
